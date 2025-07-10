@@ -1,7 +1,6 @@
-﻿using Server = HttpServer.Server.HttpServer;
+﻿using System.Net;
+using Server = HttpServer.Server.HttpServer;
 
-// We can create a manager to handle HTTPS later
-const int port = 80;
-
-var server = new Server(port);
+// Need a better way to configure the port number 
+var server = new Server(IPAddress.Any, 8080);
 server.Start();

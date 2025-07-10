@@ -1,13 +1,15 @@
-﻿namespace HttpServerTests;
+﻿using System.Net;
+
+namespace HttpServerTests;
 using HttpServer.Server;
 
-public class UnitTest1
+public class HttpServerTests
 {
     [Fact]
     public void Test1()
     {
         const int port = 80;
-        var server = new HttpServer(port);
+        var server = new HttpServer(IPAddress.Any, port);
         Assert.NotNull(server);
     }
 }
