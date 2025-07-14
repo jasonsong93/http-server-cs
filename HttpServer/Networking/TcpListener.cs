@@ -36,8 +36,4 @@ public class TcpListener
     {
         return _listenerSocket.Accept();
     }
-
-    public void Stop()
-    {
-    }
 }

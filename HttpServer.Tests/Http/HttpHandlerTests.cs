@@ -1,4 +1,4 @@
-namespace HttpServerTests.Http;
+namespace HttpServer.Tests.Http;
 
 public class HttpHandlerTests
 {

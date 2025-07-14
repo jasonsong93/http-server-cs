@@ -4,9 +4,9 @@ namespace HttpServer.Http;
 
 public static class HttpParser
 {
-    public static HttpResponse ParseRequest(StreamReader reader)
+    public static HttpRequest ParseRequest(StreamReader reader)
     {
         // Should parse the request into an HttpResponse type 
-        return new HttpResponse();
+        return new HttpRequest();
     }
 }

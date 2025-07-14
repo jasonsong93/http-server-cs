@@ -1,10 +1,12 @@
-namespace HttpServer.Server;
+using HttpServer.Server;
+using Interfaces.Interfaces;
 
-public class HttpHandler
+namespace HttpServer.Http;
+
+public class HttpHandler : IHttpHandler
 {
-    public HttpResponse HandleRequest(object request)
+    public HttpResponse HandleRequest(HttpRequest request)
     {
-        // This handles the request and provides a response to the user
-        return new HttpResponse();
+        throw new NotImplementedException();
     }
 }

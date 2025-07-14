@@ -1,6 +1,7 @@
 using System.Net;
 using HttpServer.Http;
 using HttpServer.Networking;
+using Interfaces.Interfaces;
 using TcpListener = HttpServer.Networking.TcpListener;
 
 namespace HttpServer.Server;
@@ -9,12 +10,16 @@ public class HttpServer
 {
     private readonly IPAddress _address;
     private readonly int _port;
+    private readonly HttpHandler _handler;
     private readonly TcpListener _listener;
+    private readonly ILogger _logger;
 
-    public HttpServer(IPAddress address, int port)
+    public HttpServer(IPAddress address, int port, HttpHandler handler, ILogger logger)
     {
         _address = address;
         _port = port;
+        _handler = handler;
+        _logger = logger;
         _listener = new TcpListener(address, port);
     }
 
@@ -22,8 +27,7 @@ public class HttpServer
     {
         // Binds to the IP address and port, then listens
         _listener.Start();
-        Console.WriteLine($"Server started on {_address}:{_port}");
-        
+        _logger.Log($"Server started on {_address}:{_port}");
         while (true)
         {
             // Accepts a single new connection
@@ -31,10 +35,9 @@ public class HttpServer
             var connection = new Connection(socket);
             var reader = connection.GetReader();
             var writer = connection.GetWriter();
-
+            
             var request = HttpParser.ParseRequest(reader);
-            var handler = new HttpHandler();
-            var response = handler.HandleRequest(request);
+            var response = _handler.HandleRequest(request);
         }
     }
 }
