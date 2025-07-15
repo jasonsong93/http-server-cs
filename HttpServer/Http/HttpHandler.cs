@@ -13,7 +13,7 @@ public class HttpHandler : IHttpHandler
             Headers = new Dictionary<string, string>
             {
                 ["Content-Type"] = "text/plain",
-                ["Content-Lenght"] = "5"
+                ["Content-Length"] = "5"
             },
             Body = "Hello"
         };
