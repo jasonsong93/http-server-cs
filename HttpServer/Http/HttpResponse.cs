@@ -12,14 +12,14 @@ public class HttpResponse
     public override string ToString()
     {
         var response = new StringBuilder();
-        response.AppendLine($"HTTP/1.1 {StatusCode} {ReasonPhrase}");
+        response.Append($"HTTP/1.1 {StatusCode} {ReasonPhrase}\r\n");
         foreach (var header in Headers)
         {
-            response.AppendLine($"{header.Key}: {header.Value}");
+            response.Append($"{header.Key}: {header.Value}\r\n");
         }
-        response.AppendLine();  // blank line
+        response.Append("\r\n");
         response.Append(Body);
         return response.ToString();
-
     }
+
 }

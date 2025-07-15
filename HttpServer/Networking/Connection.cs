@@ -15,7 +15,7 @@ public class Connection
     private readonly NetworkStream _networkStream;
     
     // Maybe allow user config when I learn if it's good/bad practice
-    private static readonly Encoding DefaultEncoding = Encoding.UTF8;
+    private static readonly Encoding DefaultEncoding = Encoding.ASCII;
 
     public Connection(Socket clientSocket)
     {
