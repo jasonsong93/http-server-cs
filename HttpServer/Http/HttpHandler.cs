@@ -1,5 +1,4 @@
-using HttpServer.Server;
-using Interfaces.Interfaces;
+using HttpServer.Interfaces;
 
 namespace HttpServer.Http;
 

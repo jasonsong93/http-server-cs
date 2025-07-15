@@ -1,4 +1,4 @@
-namespace HttpServer.Server;
+namespace HttpServer.Http;
 
 /// <summary>
 /// See the following specs:
@@ -10,12 +10,7 @@ namespace HttpServer.Server;
 
 public class HttpRequest
 {
-    /*
-     * HTTP-message   = start-line
-       *( header-field CRLF )
-       CRLF
-       [ message-body ]
-     */
+
     
     // The start-line is modelled as 3 parts, eg:
     // Method: GET
@@ -23,4 +18,7 @@ public class HttpRequest
     // HTTP Version: HTTP/1.1
     public string Method { get; set; } = string.Empty;
     public string Target { get; set; } = string.Empty;
+    public string Version { get; set; } = string.Empty;
+    public Dictionary<string, string> Headers = new();
+    public string Body = string.Empty;
 }

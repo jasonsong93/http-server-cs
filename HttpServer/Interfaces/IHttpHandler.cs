@@ -1,6 +1,6 @@
-using HttpServer.Server;
+using HttpServer.Http;
 
-namespace Interfaces.Interfaces;
+namespace HttpServer.Interfaces;
 
 public interface IHttpHandler
 {

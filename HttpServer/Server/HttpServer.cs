@@ -1,7 +1,7 @@
 using System.Net;
 using HttpServer.Http;
+using HttpServer.Interfaces;
 using HttpServer.Networking;
-using Interfaces.Interfaces;
 using TcpListener = HttpServer.Networking.TcpListener;
 
 namespace HttpServer.Server;
@@ -38,6 +38,8 @@ public class HttpServer
             
             var request = HttpParser.ParseRequest(reader);
             var response = _handler.HandleRequest(request);
+            
+            
         }
     }
 }
