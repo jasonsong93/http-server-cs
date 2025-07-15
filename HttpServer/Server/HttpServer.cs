@@ -36,11 +36,21 @@ public class HttpServer
             var reader = connection.GetReader();
             var writer = connection.GetWriter();
             
-            var request = HttpParser.ParseRequest(reader);
-            var response = _handler.HandleRequest(request);
-
-            Console.WriteLine(response.ToString());
-            
+            try
+            {
+                var request = HttpParser.ParseRequest(reader);
+                var response = _handler.HandleRequest(request);
+                writer.Write(response.ToString()); 
+            }
+            catch (Exception ex)
+            {
+                _logger.Log($"Error handling request: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+                _logger.Log("Client connection closed");
+            }
         }
     }
 }
