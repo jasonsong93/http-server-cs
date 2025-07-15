@@ -38,7 +38,8 @@ public class HttpServer
             
             var request = HttpParser.ParseRequest(reader);
             var response = _handler.HandleRequest(request);
-            
+
+            Console.WriteLine(response.ToString());
             
         }
     }

@@ -6,6 +6,18 @@ public class HttpHandler : IHttpHandler
 {
     public HttpResponse HandleRequest(HttpRequest request)
     {
-        throw new NotImplementedException();
+        var response = new HttpResponse
+        {
+            StatusCode = 200,
+            ReasonPhrase = "OK",
+            Headers = new Dictionary<string, string>
+            {
+                ["Content-Type"] = "text/plain",
+                ["Content-Lenght"] = "5"
+            },
+            Body = "Hello"
+        };
+
+        return response;
     }
 }
